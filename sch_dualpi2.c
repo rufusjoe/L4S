@@ -352,6 +352,8 @@ static int dualpi2_enqueue_skb(struct sk_buff *skb, struct Qdisc *sch,
 	struct dualpi2_sched_data *q = qdisc_priv(sch);
 	struct dualpi2_skb_cb *cb;
 
+	printk(KERN_DEBUG"Packets_in_classic=%u | Packets_in_L4S=%u | Ecn_marked=%u ", q->packets_in_c, q->packets_in_l, q->ecn_mark);
+
 	if (unlikely(qdisc_qlen(sch) >= sch->limit)) {
 		qdisc_qstats_overlimit(sch);
 		if (skb_in_l_queue(skb))
